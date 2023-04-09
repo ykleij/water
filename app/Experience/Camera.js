@@ -27,11 +27,11 @@ export default class Camera {
             aspect: this.sizes.aspect,
             near: 0.01,
             far: 1000,
-            fov: 75,
+            fov: 110,
         }
 
-        // this.setPerspectiveCamera();
-        this.setOrtographicCamera();
+        this.setPerspectiveCamera();
+        // this.setOrtographicCamera();
         this.setOrbitControls();
     }
 
@@ -45,7 +45,6 @@ export default class Camera {
             this.params1.far
         );
 
-        this.orthographicCamera.position.x = 10;
         this.scene.add(this.orthographicCamera);
     }
 
@@ -57,18 +56,18 @@ export default class Camera {
             this.params2.far
         )
 
-        this.perspectiveCamera.position.z = -5;
+        this.perspectiveCamera.position.x = -10;
         this.scene.add(this.perspectiveCamera);
     }
 
     setOrbitControls() {
-        this.controls = new OrbitControls(this.orthographicCamera, this.canvas);
+        this.controls = new OrbitControls(this.perspectiveCamera, this.canvas);
         this.controls.enableDamping = true;
     }
 
     onResize() {
-        this.orthographicCamera.aspect = this.sizes.aspect;
-        this.orthographicCamera.updateProjectionMatrix();
+        this.perspectiveCamera.aspect = this.sizes.aspect;
+        this.perspectiveCamera.updateProjectionMatrix();
     }
 
     update() {

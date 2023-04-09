@@ -31,7 +31,7 @@ export default class Resources extends EventEmitter{
     }
 
     startLoading() {
-        for(const asset of this.assets){
+        for(const asset of this.assets[0].water){
             if(asset.type==="glbModel"){
                 this.loaders.gltfLoader.load(asset.path, (file)=>{
                     // console.log(file)
